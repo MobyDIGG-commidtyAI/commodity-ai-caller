@@ -1,0 +1,58 @@
+# News genre per text_event row (src/cai/genre.py). Decided by WHO published it, not by the text.
+#   social_network : community posts and comments
+#   industry_news  : hardware / semiconductor trade press, market trackers, company press releases
+#   general_news   : everything else (financial and mainstream media); also the default
+# Patterns are case-insensitive regexes matched against the publisher name, the " - Publisher"
+# suffix of Google News titles, and the URL domain. Move an outlet by editing these lists.
+
+social_sources:          # text_event.source prefixes
+  - "reddit:"
+  - "reddit_c:"
+  - "hn"
+
+industry_sources:        # whole sources that are industry by definition
+  - trendforce
+
+industry_outlets:
+  # market trackers and trade press
+  - trendforce
+  - digitimes
+  - techpowerup
+  - "tom'?s ?hardware"
+  - wccftech
+  - anandtech
+  - theregister|the register
+  - notebookcheck
+  - "pc ?guide"
+  - techradar
+  - eetimes|ee times
+  - semianalysis
+  - servethehome
+  - blocksandfiles|blocks and files
+  - eenews
+  - tech-insider
+  - shattered\.io
+  - ic-pcb
+  - tomsguide|tom's guide
+  - networkworld
+  - sammobile
+  - windowscentral
+  - howtogeek
+  - "pcgamer|pc gamer"
+  - videocardz
+  - "igor'?s ?lab"
+  # company newsrooms
+  - newsroom
+  - micron\.com|investors\.micron
+  - skhynix|news\.skhynix
+  - news\.samsung|semiconductor\.samsung
+  - nvidianews|blogs\.nvidia
+  - "nvidia newsroom"
+
+# press-release wires carry every kind of company (mining, biotech ...): a wire item is industry news only
+# when its title names the chip industry; otherwise general_news with rule "wire-offtopic:<wire>"
+press_wires:
+  - globenewswire
+  - businesswire|business wire
+  - prnewswire|pr newswire
+industry_terms: "micron|samsung|hynix|nvidia|\\bamd\\b|western digital|kioxia|sandisk|intel|tsmc|memory|dram|nand|hbm|chip|semiconductor|gpu|graphics|ssd|flash|wafer"

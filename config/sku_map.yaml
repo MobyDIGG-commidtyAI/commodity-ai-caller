@@ -1,0 +1,164 @@
+# SKU universe for the hackathon. Start RAM (real price shock 2025-26) then SSD. GPU = later.
+# keepa_asin: fill with `python scripts/find_asins.py` (Keepa search) — DO NOT guess ASINs.
+# trendforce_key: which upstream spot series is this product's commodity proxy.
+# thai_urls: product pages for the daily THB snapshot (optional; add when you have them).
+
+- sku: RAM-DDR5-32GB-2x16-6000-CORSAIR-VENG
+  category: RAM
+  display_name: Corsair Vengeance DDR5 32GB (2x16GB) 6000MT/s
+  keepa_domain: 1
+  keepa_asin: null
+  trendforce_key: TF-DDR4-1GX8
+  keywords: ["Corsair Vengeance DDR5", "DDR5 6000", "DDR5 32GB"]
+
+- sku: RAM-DDR5-32GB-2x16-6000-GSKILL-TRIDENT
+  category: RAM
+  display_name: G.Skill Trident Z5 RGB DDR5 32GB (2x16GB) 6000MT/s
+  keepa_domain: 1
+  keepa_asin: null
+  trendforce_key: TF-DDR4-1GX8
+  keywords: ["Trident Z5", "G.Skill DDR5"]
+
+- sku: RAM-DDR5-32GB-2x16-5600-KINGSTON-FURY
+  category: RAM
+  display_name: Kingston FURY Beast DDR5 32GB (2x16GB) 5600MT/s
+  keepa_domain: 1
+  keepa_asin: null
+  trendforce_key: TF-DDR4-1GX8
+  keywords: ["Kingston FURY Beast DDR5", "Kingston DDR5"]
+
+- sku: RAM-DDR5-64GB-2x32-6000-CORSAIR-VENG
+  category: RAM
+  display_name: Corsair Vengeance DDR5 64GB (2x32GB) 6000MT/s
+  keepa_domain: 1
+  keepa_asin: null
+  trendforce_key: TF-DDR4-1GX8
+  keywords: ["DDR5 64GB", "2x32GB DDR5"]
+
+- sku: RAM-DDR5-32GB-2x16-5600-CRUCIAL-PRO
+  category: RAM
+  display_name: Crucial Pro DDR5 32GB (2x16GB) 5600MT/s
+  keepa_domain: 1
+  keepa_asin: null
+  trendforce_key: TF-DDR4-1GX8
+  keywords: ["Crucial Pro DDR5", "Crucial DDR5"]
+
+- sku: RAM-DDR4-32GB-2x16-3200-CORSAIR-VENG-LPX
+  category: RAM
+  display_name: Corsair Vengeance LPX DDR4 32GB (2x16GB) 3200MT/s
+  keepa_domain: 1
+  keepa_asin: null
+  trendforce_key: TF-DDR4-1GX8
+  keywords: ["Vengeance LPX", "DDR4 3200 32GB"]
+
+- sku: RAM-DDR4-16GB-2x8-3200-CORSAIR-VENG-LPX
+  category: RAM
+  display_name: Corsair Vengeance LPX DDR4 16GB (2x8GB) 3200MT/s
+  keepa_domain: 1
+  keepa_asin: null
+  trendforce_key: TF-DDR4-1GX8
+  keywords: ["DDR4 3200 16GB", "2x8GB DDR4"]
+
+- sku: RAM-DDR4-16GB-2x8-3200-KINGSTON-FURY
+  category: RAM
+  display_name: Kingston FURY Beast DDR4 16GB (2x8GB) 3200MT/s
+  keepa_domain: 1
+  keepa_asin: null
+  trendforce_key: TF-DDR4-1GX8
+  keywords: ["Kingston FURY Beast DDR4", "HyperX Fury DDR4"]
+
+- sku: RAM-SODIMM-DDR5-32GB-2x16-5600-CRUCIAL
+  category: RAM
+  display_name: Crucial SODIMM DDR5 32GB (2x16GB) 5600MT/s (laptop)
+  keepa_domain: 1
+  keepa_asin: null
+  trendforce_key: TF-DDR4-1GX8
+  keywords: ["SODIMM DDR5", "laptop RAM DDR5"]
+
+- sku: RAM-SODIMM-DDR4-32GB-2x16-3200-CRUCIAL
+  category: RAM
+  display_name: Crucial SODIMM DDR4 32GB (2x16GB) 3200MT/s (laptop)
+  keepa_domain: 1
+  keepa_asin: null
+  trendforce_key: TF-DDR4-1GX8
+  keywords: ["SODIMM DDR4", "laptop RAM DDR4"]
+
+- sku: SSD-NVME-1TB-SAMSUNG-990PRO
+  category: SSD
+  display_name: Samsung 990 PRO 1TB NVMe
+  keepa_domain: 1
+  keepa_asin: null
+  trendforce_key: TF-NAND-512GB-TLC
+  keywords: ["990 PRO", "Samsung 990"]
+
+- sku: SSD-NVME-2TB-SAMSUNG-990PRO
+  category: SSD
+  display_name: Samsung 990 PRO 2TB NVMe
+  keepa_domain: 1
+  keepa_asin: null
+  trendforce_key: TF-NAND-512GB-TLC
+  keywords: ["990 PRO 2TB"]
+
+- sku: SSD-NVME-1TB-WD-SN850X
+  category: SSD
+  display_name: WD Black SN850X 1TB NVMe
+  keepa_domain: 1
+  keepa_asin: null
+  trendforce_key: TF-NAND-512GB-TLC
+  keywords: ["SN850X"]
+
+- sku: SSD-NVME-2TB-WD-SN850X
+  category: SSD
+  display_name: WD Black SN850X 2TB NVMe
+  keepa_domain: 1
+  keepa_asin: null
+  trendforce_key: TF-NAND-512GB-TLC
+  keywords: ["SN850X 2TB"]
+
+- sku: SSD-NVME-1TB-CRUCIAL-P3PLUS
+  category: SSD
+  display_name: Crucial P3 Plus 1TB NVMe
+  keepa_domain: 1
+  keepa_asin: null
+  trendforce_key: TF-NAND-512GB-TLC
+  keywords: ["P3 Plus"]
+
+- sku: SSD-NVME-2TB-CRUCIAL-T500
+  category: SSD
+  display_name: Crucial T500 2TB NVMe
+  keepa_domain: 1
+  keepa_asin: null
+  trendforce_key: TF-NAND-512GB-TLC
+  keywords: ["Crucial T500"]
+
+- sku: SSD-NVME-1TB-KINGSTON-KC3000
+  category: SSD
+  display_name: Kingston KC3000 1TB NVMe
+  keepa_domain: 1
+  keepa_asin: null
+  trendforce_key: TF-NAND-512GB-TLC
+  keywords: ["KC3000"]
+
+- sku: SSD-SATA-1TB-SAMSUNG-870EVO
+  category: SSD
+  display_name: Samsung 870 EVO 1TB SATA
+  keepa_domain: 1
+  keepa_asin: null
+  trendforce_key: TF-NAND-512GB-TLC
+  keywords: ["870 EVO"]
+
+- sku: SSD-SATA-1TB-CRUCIAL-MX500
+  category: SSD
+  display_name: Crucial MX500 1TB SATA
+  keepa_domain: 1
+  keepa_asin: null
+  trendforce_key: TF-NAND-512GB-TLC
+  keywords: ["MX500"]
+
+- sku: SSD-NVME-4TB-SAMSUNG-990PRO
+  category: SSD
+  display_name: Samsung 990 PRO 4TB NVMe
+  keepa_domain: 1
+  keepa_asin: null
+  trendforce_key: TF-NAND-512GB-TLC
+  keywords: ["990 PRO 4TB"]

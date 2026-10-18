@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.env
+.env.*
+.DS_Store
+dist/
+*.log
+data/tank.db
+data/*.db*
+data/raw/
+data/export/
+data/partner/
+logs/

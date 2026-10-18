@@ -1,0 +1,22 @@
+{
+  "displayName": "commodity-ai: daily refresh failed",
+  "documentation": {
+    "mimeType": "text/markdown",
+    "content": "Cloud Run Job `__JOB__` failed. Exit 3 = exports were published but a collector failed (often blocked from GCP IPs); any other code = the API still serves the previous export. Runbook: README.md (Troubleshooting)"
+  },
+  "combiner": "OR",
+  "conditions": [
+    {
+      "displayName": "failed execution",
+      "conditionThreshold": {
+        "filter": "resource.type = \"cloud_run_job\" AND resource.labels.job_name = \"__JOB__\" AND metric.type = \"run.googleapis.com/job/completed_execution_count\" AND metric.labels.result = \"failed\"",
+        "aggregations": [{"alignmentPeriod": "300s", "perSeriesAligner": "ALIGN_SUM"}],
+        "comparison": "COMPARISON_GT",
+        "thresholdValue": 0,
+        "duration": "0s",
+        "trigger": {"count": 1}
+      }
+    }
+  ],
+  "alertStrategy": {"autoClose": "86400s"}
+}

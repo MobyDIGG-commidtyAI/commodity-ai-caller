@@ -1,0 +1,6 @@
+{
+  "rule": [
+    {"action": {"type": "Delete"}, "condition": {"isLive": false, "numNewerVersions": 7}},
+    {"action": {"type": "Delete"}, "condition": {"isLive": false, "daysSinceNoncurrentTime": 30}}
+  ]
+}

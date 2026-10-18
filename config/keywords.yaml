@@ -1,0 +1,39 @@
+# Impact keywords = hard triggers for the rubric (พี่ชิน's 8-10 word idea).
+# direction: expected effect on RETAIL PRICE of the product (+1 up, -1 down, 0 ambiguous -> let judge decide)
+# Each is grounded in a real 2024-2026 event visible in TrendForce weekly spot reports.
+# Use: a text item that matches NO trigger defaults to 0 unless the judge finds a strong product-specific signal.
+
+RAM:
+  - {kw: ["contract price", "contract prices"],            direction: 0,  note: "Direction comes from verb: hike/raise = +1, cut/decline = -1. Spot follows contract."}
+  - {kw: ["HBM", "AI server", "server DRAM", "datacenter demand"], direction: +1, note: "Fabs shift wafers to HBM/server -> consumer DDR starved. The 2025-26 rally driver."}
+  - {kw: ["DDR4 EOL", "end of life", "discontinue DDR4", "phase out"], direction: +1, note: "Supply withdrawal on legacy nodes; DDR4 went above DDR5 in 2025."}
+  - {kw: ["Kingston price", "module makers raise", "module houses"], direction: +1, note: "Largest module house moving prices = retail follows within weeks."}
+  - {kw: ["holding back inventory", "reluctant to sell", "panic buy", "shortage", "tight supply"], direction: +1}
+  - {kw: ["inventory high", "elevated inventory", "weak demand", "sluggish demand", "oversupply", "consolidation"], direction: -1}
+  - {kw: ["price cut", "prices retreat", "decline", "drop", "correction"], direction: -1, note: "Only when subject is DRAM/DDR price."}
+  - {kw: ["tariff", "export control", "ban", "sanction", "Section 232", "semiconductor tariff"], direction: +1, note: "US/China trade action -> cost-push + front-loading."}
+  - {kw: ["Lunar New Year", "factory shutdown", "holiday"], direction: 0, note: "Seasonal pause; low volume, noise."}
+  - {kw: ["new fab", "capacity expansion", "capex increase", "ramp"], direction: -1, note: "Lagged (12-24m) negative; weak short-term signal."}
+  - {kw: ["Samsung", "SK hynix", "Micron"], direction: 0, note: "Entity trigger only; pair with a verb trigger above."}
+
+SSD:
+  - {kw: ["NAND contract", "wafer price", "512Gb TLC", "NAND spot"], direction: 0, note: "Direction from verb."}
+  - {kw: ["QLC", "enterprise SSD demand", "AI storage", "eSSD"],       direction: +1}
+  - {kw: ["wafer output cut", "production cut", "NAND supply cut", "reduce output"], direction: +1}
+  - {kw: ["inventory high", "module houses weak", "sluggish", "oversupply"], direction: -1}
+  - {kw: ["shortage", "tight supply", "allocation"],                    direction: +1}
+  - {kw: ["tariff", "export control", "ban"],                           direction: +1}
+  - {kw: ["new generation", "PCIe 6", "PCIe 5.0 mainstream", "launch"], direction: -1, note: "Previous gen discounts at new launch (product-level, not commodity-level)."}
+  - {kw: ["firmware bug", "failure", "recall", "data loss"],            direction: -1, note: "Product quality aspect; hurts that SKU, not category."}
+
+GPU:   # descoped for v1 — listed so พี่เบิร์ด can test the rubric later
+  - {kw: ["export control", "China ban", "H20", "AI chip ban"],  direction: +1}
+  - {kw: ["scalper", "out of stock", "MSRP unavailable"],         direction: +1}
+  - {kw: ["new generation", "RTX 60", "RDNA 5", "launch"],        direction: -1}
+  - {kw: ["GDDR7 shortage", "GDDR price", "VRAM shortage"],       direction: +1}
+  - {kw: ["tariff"],                                              direction: +1}
+
+ASPECTS:   # score each separately, then weight — avoid one blurry polarity
+  - quality_reliability      # "is this product good"
+  - price_expectation        # "will the price go up or down"
+  - wait_for_next_gen        # "should I wait"
