@@ -41,8 +41,9 @@ Bucket layout: `tank.db`, `raw/` (cursors), `export/` (what the API reads), `par
 ## Run locally
 
 ```bash
-python3.12 -m venv .venv && . .venv/bin/activate
-pip install -r requirements.txt -r requirements-dev.txt
+conda create --yes --prefix ./.conda/codex/dev python=3.12
+source "$(conda info --base)/etc/profile.d/conda.sh" && conda activate ./.conda/codex/dev
+UV_PROJECT_ENVIRONMENT="$CONDA_PREFIX" "$(conda info --base)/bin/uv" sync --frozen --inexact
 scripts/daily_cron.sh          # updates data/tank.db and data/export/ (last 21 days of sources)
 ```
 

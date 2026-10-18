@@ -1,5 +1,8 @@
 .git
 .venv
+.conda
+.uv_cache
+*.egg-info
 .github
 tests
 deploy

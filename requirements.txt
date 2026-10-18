@@ -1,9 +1,0 @@
-requests
-beautifulsoup4
-pandas
-pyarrow
-numpy
-pyyaml
-feedparser
-datasketch
-matplotlib   # scripts/plot.py (daily refresh)
