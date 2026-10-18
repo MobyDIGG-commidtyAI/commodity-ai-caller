@@ -14,13 +14,17 @@ flowchart LR
 
   subgraph gcp["Google Cloud · asia-southeast1"]
     scheduler["Cloud Scheduler<br/>09:00 Asia/Bangkok"] --> job["Cloud Run Jobs<br/>commodity-ai-caller"]
-    job -->|read-write| bucket[("Cloud Storage<br/>private · versioned bucket<br/>tank.db · export/")]
+    scheduler --> judge["Cloud Run Job<br/>commodity-ai-judge"]
+    job -->|export/news_feed.csv · read-write| bucket[("Cloud Storage<br/>private · versioned bucket<br/>tank.db · export/")]
     bucket -->|read-only mount| api["Cloud Run service<br/>commodity-ai-backend · public"]
     job -->|write| sql[("Cloud SQL<br/>application database")]
     sql -->|read| api
+    bucket -->|news feed + price contract| judge
+    judge -->|export/judge.json| bucket
   end
 
   job --> sources["TrendForce · Reddit<br/>RSS · price indexes"]
+  judge -->|DDR5 chat rubric and GPU article decisions| openrouter["OpenRouter"]
 ```
 
 ## What it collects
@@ -63,9 +67,13 @@ shellcheck -S warning scripts/*.sh deploy/*.sh
 
 ## Deploy (Google Cloud)
 
-This repository runs as a **Cloud Run Job**, not a Cloud Run Service. The image
-is stored in Artifact Registry at
-`asia-southeast1-docker.pkg.dev/evocative-volt-512006-u7/app-registry/commodity-ai-caller`.
+This repository runs as a **Cloud Run Job**, not a Cloud Run Service. Set `REPO`
+to the Artifact Registry repository that stores its image before using `deploy/gcp.sh`:
+
+```bash
+export REPO=your-repository-name
+```
+
 Do not use a Cloud Run Service source-deploy trigger for this image: it does not
 listen on `PORT=8080`.
 
@@ -85,13 +93,13 @@ bucket. If those files are already staged in GCS, copy their contents to the
 root of `gs://evocative-volt-512006-u7-cai-tank` instead; `tank.db` must be at
 the bucket root.
 
-### Deploy the image already in app-registry
+### Deploy an existing image
 
-The tag `a0fa455-job-20261018` was pushed to `app-registry`. Deploy it without
-rebuilding, then execute the job once to check it:
+If an image tag is already in your Artifact Registry repository, deploy it
+without rebuilding, then execute the job once to check it:
 
 ```bash
-PROJECT=evocative-volt-512006-u7 TAG=a0fa455-job-20261018 deploy/gcp.sh deploy
+PROJECT=evocative-volt-512006-u7 TAG=your-image-tag deploy/gcp.sh deploy
 gcloud run jobs execute cai-refresh --project evocative-volt-512006-u7 --region asia-southeast1 --wait
 ```
 
@@ -106,7 +114,7 @@ The separate `commodity-ai-backend` service serves the export.
 PROJECT=evocative-volt-512006-u7 deploy/gcp.sh build deploy
 ```
 
-The script builds and pushes to `app-registry`, then updates the Cloud Run Job;
+The script builds and pushes to the configured Artifact Registry repository, then updates the Cloud Run Job;
 it does not execute the job immediately. The job runs daily through the
 scheduler. If collectors are blocked from GCP IPs, set `HTTPS_PROXY_SECRET`.
 
