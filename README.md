@@ -8,15 +8,19 @@ in a SQLite "tank", rebuilds the features and the assessment snapshot, checks th
 
 ```mermaid
 flowchart LR
-  shopper(["Shopper on Shopee / Lazada"]) --> ext["commodity-ai-extension<br/>Chrome extension (developer mode)"]
-  ext -- "HTTPS /api/v2/assessment" --> api
-  web(["Browser"]) -- "/dashboard" --> api
+  shopper(["Shopper on<br/>Shopee / Lazada"]) --> extension["commodity-ai-extension<br/>Chrome extension (developer mode)"]
+  extension -->|HTTPS /api/v2/assessment| api
+  browser(["Browser"]) -->|/dashboard| api
+
   subgraph gcp["Google Cloud · asia-southeast1"]
-    sched["Cloud Scheduler<br/>09:00 Asia/Bangkok"] --> job["commodity-ai-caller<br/>Cloud Run Job"]
-    job -- "read-write" --> bucket[("Cloud Storage bucket<br/>private · versioned<br/>tank.db · export/")]
-    bucket -- "read-only mount" --> api["commodity-ai-backend<br/>Cloud Run service · public"]
+    scheduler["Cloud Scheduler<br/>09:00 Asia/Bangkok"] --> job["Cloud Run Jobs<br/>commodity-ai-caller"]
+    job -->|read-write| bucket[("Cloud Storage<br/>private · versioned bucket<br/>tank.db · export/")]
+    bucket -->|read-only mount| api["Cloud Run service<br/>commodity-ai-backend · public"]
+    job -->|write| sql[("Cloud SQL<br/>application database")]
+    sql -->|read| api
   end
-  job --> sources["TrendForce · Reddit · RSS · price indexes"]
+
+  job --> sources["TrendForce · Reddit<br/>RSS · price indexes"]
 ```
 
 ## What it collects
