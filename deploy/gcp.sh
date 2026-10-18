@@ -12,7 +12,7 @@ cd "$(dirname "$0")/.."
 : "${PROJECT:?set PROJECT to the GCP project id}"
 REGION=${REGION:-asia-southeast1}
 BUCKET=${BUCKET:-$PROJECT-cai-tank}
-REPO=${REPO:-cai}
+REPO=${REPO:-app-registry}
 SERVICE=${SERVICE:-cai-api}
 JOB=${JOB:-cai-refresh}
 SCHEDULE=${SCHEDULE:-0 9 * * *}

@@ -1,5 +1,7 @@
 .git
 .venv
+.conda
+.uv_cache
 .github
 tests
 deploy
